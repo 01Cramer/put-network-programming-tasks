@@ -24,15 +24,21 @@ struct ifrtinfo {
 };
  
  int main(int argc, char** argv) {
-    int sfd, sfd2, sfd3, i;
+    int sfd, i;
     ssize_t len;
     char* frame;
     char* fdata;
     struct ethhdr* fhead;
-    struct ifreq ifr, ifr2;
+    struct ifreq ifr;
     struct sockaddr_ll sall;
+
+    int sfd2;
     struct rtentry route;
-    struct sockaddr_in* addr, sin;
+    struct sockaddr_in* addr;
+
+    int sfd3;
+    struct ifreq ifr2;
+    struct sockaddr_in* sin;
   
     sfd = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_CUSTOM));
     strncpy(ifr.ifr_name, argv[1], IFNAMSIZ);
