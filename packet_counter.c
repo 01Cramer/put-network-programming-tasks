@@ -13,7 +13,8 @@
 char* errbuf;
 pcap_t* handle;
 
-int packets[4] = {
+int packets[4] = 
+{
     0, // ARP
     0, // IP
     0, // IP/UDP
